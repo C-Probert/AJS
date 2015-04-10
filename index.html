@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" ng-app="tableApp">
+<head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+<script src="controller.js"></script>
+</head>
+<body>
+
+<div ng-controller="tableController">
+  <table>
+    <thead>
+      <tr>
+
+      </tr>
+    </thead>
+    <tbody >
+    <tr ng-repeat="row in data track by $index">
+      <td ng-repeat="col in row " >
+
+	<input type="number" step="0.01" ng-model="col.value" ng-focus="cellFocus($parent.$index)">
+      </td>
+      <td>
+	<!-- totals column-->
+
+	{{ data | total:$index:1 | currency }}
+
+      </td>
+    </tr>
+    <tr > <!--totals row-->
+
+      <td ng-repeat="i in [0,1,2,3,4,5]" >{{ data | total:$index:0 | currency }}</td> 
+	
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</body>
+</html>
