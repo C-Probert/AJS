@@ -20,7 +20,7 @@
     <tr ng-repeat="row in data track by $index">
       <td ng-repeat="col in row " >
 
-	<input type="number" step="0.01" ng-model="col.value" ng-focus="cellFocus($parent.$index)">
+	<input type="number" step="0.01" ng-model="col.value" ng-change="cellEdit($parent.$index)">
       </td>
       <td>
 	<!-- totals column-->
